@@ -1,15 +1,19 @@
-import React from 'react'
+import {useState, useSTate} from 'react'
 import tw from "tailwind-styled-components"
 import Link from 'next/link'
 
 const Search =() => {
+
+    const [pickup, setPickup] = useState("")
+    const [dropoff, setDropoff] = useState("")
+    
     return (
-        <Wrapper>
-           <Link href ="/">
+        <Wrapper>      
             <ButtonContainer>
+                <Link href ="/">
                 <BackButton src= "https://img.icons8.com/ios-filled/50/000000/left.png"/>
+              </Link>
             </ButtonContainer>
-            </Link>
             <InputContainer>
                 <FromToIcons>
                     <Circle src = "https://img.icons8.com/ios-filled/50/9CA3AF/filled-circle.png"/>
@@ -17,8 +21,16 @@ const Search =() => {
                     <Square src = " https://img.icons8.com/windows/50/000000/square-full.png"/>
                 </FromToIcons>
                 <InputBoxes>
-                    <Input placeholder="Enter pickup location"/>
-                    <Input placeholder = "Where to?"/>
+                    <Input 
+                    placeholder="Enter pickup location"
+                    value = {pickup}
+                    onChange={(e)=> setPickup(e.target.value)}
+                    />
+                    <Input 
+                    placeholder = "Where to?"
+                    value = {dropoff}
+                    onChange={(e)=> setDropoff(e.target.value)}
+                    />
                 </InputBoxes>
                 <PlusIcon src = "https://img.icons8.com/ios/50/000000/plus-math.png"/>
             </InputContainer>
@@ -26,7 +38,16 @@ const Search =() => {
                     <StarIcon src = "https://img.icons8.com/ios-filled/50/ffffff/star--v1.png" />
                     Saved Placed
                 </SavedPlaces>
-                <Location>Confirm Locations</Location>
+                <Link href={{   
+                    pathname: "/confirm",
+                    query: {
+                        pickup: pickup,
+                        dropoff: dropoff
+                    }
+
+                }}>
+                <ConfirmButton>Confirm Locations</ConfirmButton>
+                </Link>
         </Wrapper>
             
     )
@@ -73,6 +94,6 @@ const SavedPlaces = tw.div`
 const StarIcon = tw.img`
     bg-gray-400 w-10 h-10 p-2 rounded-full mr-2 
 `
-const Location = tw.div`
-    bg-gray-900 text-white my-7 py-2 text-center cursor-pointer text-xl items-center mx-16
+const ConfirmButton = tw.div`
+    bg-black text-white my-4 py-3 text-center cursor-pointer text-2xl items-center mx-4 
 `
