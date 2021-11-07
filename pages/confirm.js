@@ -3,14 +3,15 @@ import tw from "tailwind-styled-components"
 import Map from './components/Map'
 import { useRouter } from 'next/router'
 import RideSelector from './components/RideSelector'
+import Link from 'next/link'
 
 const Confirm = () => {
 
     const router = useRouter ()
     const {pickup , dropoff} = router.query
 
-    const [pickupCoordinates, setPickupCoordinates] = useState()
-    const [dropoffCoordinates, setdropoffCoordinates ] = useState()
+    const [pickupCoordinates, setpickupCoordinates] = useState([0, 0])
+    const [dropoffCoordinates, setdropoffCoordinates ] = useState([0, 0])
 
 
     const getPickupCoordinates = (pickup) => {
@@ -22,7 +23,7 @@ const Confirm = () => {
         }))
         .then(response => response.json())
         .then(data =>{
-            setPickupCoordinates(data.features[0].center)
+            setpickupCoordinates(data.features[0].center)
         })
 
     }
@@ -48,12 +49,18 @@ const Confirm = () => {
 
     return (
         <Wrapper>
+            <Link href ="/search">
+            <BackButton src = "https://img.icons8.com/ios-filled/50/000000/left.png" />
+            </Link>
             <Map 
                 pickupCoordinates = {pickupCoordinates}
                 dropoffCoordinates = {dropoffCoordinates}
             />
             <RideContainer>
-                <RideSelector />
+                <RideSelector 
+                pickupCoordinates = {pickupCoordinates}
+                dropoffCoordinates = {dropoffCoordinates}
+                />
                 <ConfirmButtonContainer>
                     <ConfirmButton>
                         Confirm UberX
@@ -79,4 +86,7 @@ const ConfirmButtonContainer = tw.div`
 `
 const ConfirmButton = tw.div`
      bg-black text-white my-4 mx-4 text-center py-4 
+`
+const BackButton = tw.img`
+    h-12 px-4 mx-2 w-20 z-20 cursor-pointer absolute 
 `

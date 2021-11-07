@@ -11,8 +11,8 @@ const Search =() => {
         <Wrapper>      
             <ButtonContainer>
                 <Link href ="/">
-                <BackButton src= "https://img.icons8.com/ios-filled/50/000000/left.png"/>
-              </Link>
+                    <BackButton src= "https://img.icons8.com/ios-filled/50/000000/left.png"/>
+                </Link>
             </ButtonContainer>
             <InputContainer>
                 <FromToIcons>
@@ -36,7 +36,7 @@ const Search =() => {
             </InputContainer>
                 <SavedPlaces>
                     <StarIcon src = "https://img.icons8.com/ios-filled/50/ffffff/star--v1.png" />
-                    Saved Placed
+                    Saved Places
                 </SavedPlaces>
                 <Link href={{   
                     pathname: "/confirm",
