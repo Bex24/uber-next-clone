@@ -37,7 +37,7 @@ const RideSelector = ({pickupCoordinates, dropoffCoordinates}) => {
                         <Service>{car.service}</Service>
                         <Time>5 min away</Time>
                     </CarDetails>
-                    <Price>{'$' + (rideDuration * car.multiplier)}</Price>
+                    <Price>{'$' + (rideDuration * car.multiplier).toFixed(2)}</Price>
                 </Car>
                 )}
 
@@ -56,7 +56,7 @@ const Title = tw.div`
     text-gray-500 text-center text-xs py-2 border-b
 `
 const CarList = tw.div`
-    overflow-y-scrool
+    overflow-y-scrool scrollbar-hide
 `
 const Car = tw.div`
     flex p-4 items-center 
