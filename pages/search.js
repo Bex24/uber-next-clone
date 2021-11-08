@@ -45,7 +45,7 @@ const Search =() => {
                         dropoff: dropoff
                     }
 
-                }}>
+                }} passHref ={true}>
                 <ConfirmButton>Confirm Locations</ConfirmButton>
                 </Link>
         </Wrapper>

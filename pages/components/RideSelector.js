@@ -1,3 +1,4 @@
+import { data } from 'autoprefixer'
 import {useEffect, useState} from 'react'
 import tw from "tailwind-styled-components"
 import { carList } from '../data/carList'
@@ -22,7 +23,7 @@ const RideSelector = ({pickupCoordinates, dropoffCoordinates}) => {
         .catch((e) => {
             console.log(e);
         })
-    }, [pickupCoordinates, dropoffCoordinates])
+    }, [pickupCoordinates, dropoffCoordinates, data, e])
 
     return (
         <Wrapper>
