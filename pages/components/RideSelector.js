@@ -23,7 +23,7 @@ const RideSelector = ({pickupCoordinates, dropoffCoordinates}) => {
         .catch((e) => {
             console.log(e);
         })
-    }, [pickupCoordinates, dropoffCoordinates, data, e])
+    }, [pickupCoordinates, dropoffCoordinates, data])
 
     return (
         <Wrapper>
