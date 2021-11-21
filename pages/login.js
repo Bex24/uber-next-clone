@@ -15,7 +15,7 @@ const Login = () => {
             }
         })
         
-    }, [router])
+    }, [])
 
     return (
         <Wrapper>
